@@ -1,0 +1,34 @@
+* {}
+
+
+/*
+.food-display{
+	display: inline-flex;
+	flex-flow: row wrap;
+	align-items: flex-start;
+}
+
+*/
+.food-item {
+	cursor: pointer;
+}
+
+
+.food-container{
+	margin-top: 5em;
+}
+
+.food-item-img{
+	align-content: center;
+	margin-top: 3em;
+	margin-bottom: 0em;
+	margin-left: 3em;
+	margin-right: 3em;
+}
+
+
+.food-item-label{
+	align-content: center;
+	font-size: 18px;
+	word-wrap: break-all;
+}

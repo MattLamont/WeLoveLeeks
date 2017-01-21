@@ -107,7 +107,7 @@ $(document).ready( function() {
 function queryApi( search_string , from , to , update_func ){
 	var app_key = '5606e20badfd6352c1bc3f69ee283b23';
 	var app_id  = '2d6c2a99';
-
+	console.log( "querying");
 	var url = 'https://api.edamam.com/search?q=leek%20' +
               search_string +
               '&app_id=' +
@@ -118,13 +118,21 @@ function queryApi( search_string , from , to , update_func ){
               from +
               '&to=' +
               to;
-
-    $.getJSON( url , update_func );
-
+    //debugger;
+    $.ajax({
+    	url: url,
+    	dataType: "jsonp",
+    	jsonpCallback: update_func
+    });
+/*
+    $.getJSON( url , function(json){
+    	console.log( json);
+    } );
+*/
 }
 
 function addRecipes( data ) {
-
+	console.log( data );
 
 	if( !getMore ){
 		$('.food-rows').empty();

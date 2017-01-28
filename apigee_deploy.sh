@@ -1,0 +1,1 @@
+apigeetool deploynodeapp -n WeLoveLeeks -d . -m app.js -o mattlamont -e test -b / -u matthew.lamont@ucdenver.edu -p Snak3doctor!

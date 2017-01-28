@@ -1,0 +1,29 @@
+{
+  "name": "WeLoveLeeks",
+  "version": "1.0.0",
+  "description": "Source code for the We Love Leeks website. This website allows you to learn certain facts about leeks as well as find leek related recipes. This website was built as a personal learning oppurtunity around HTML/CSS/Javascript and Jquery.",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.14.0",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7",
+    "request": "^2.79.0",
+    "url": "^0.11.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MattLamont/WeLoveLeeks.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MattLamont/WeLoveLeeks/issues"
+  },
+  "homepage": "https://github.com/MattLamont/WeLoveLeeks#readme"
+}

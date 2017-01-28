@@ -105,30 +105,20 @@ $(document).ready( function() {
 });
 
 function queryApi( search_string , from , to , update_func ){
-	var app_key = '5606e20badfd6352c1bc3f69ee283b23';
-	var app_id  = '2d6c2a99';
-	console.log( "querying");
-	var url = 'https://api.edamam.com/search?q=leek%20' +
-              search_string +
-              '&app_id=' +
-              app_id +
-              '&app_key=' +
-              app_key +
-              '&from=' +
-              from +
-              '&to=' +
-              to;
-    //debugger;
-    $.ajax({
-    	url: url,
-    	dataType: "jsonp",
-    	jsonpCallback: update_func
-    });
-/*
-    $.getJSON( url , function(json){
-    	console.log( json);
-    } );
-*/
+
+	var url = /*document.location.hostname +*/
+	          '/recipes' +
+	          '?q=leek%20' +
+	          search_string +
+	          '&from=' +
+	          from +
+	          '&to=' + 
+	          to;
+
+	console.log( url );
+
+    $.getJSON( url , update_func );
+
 }
 
 function addRecipes( data ) {
@@ -140,10 +130,10 @@ function addRecipes( data ) {
 
 	if( data.hits.length === 0 ){
 		if( !getMore ){
-			$(".food-rows").append( `<h5 class="center-align">No Recipes Found</h5>` );
+			$(".food-rows").append( '<h5 class="center-align">No Recipes Found</h5>' );
 		}
 		else{
-			$(".food-rows").append( `<h5 class="center-align">No More Recipes Found</h5>` );
+			$(".food-rows").append( '<h5 class="center-align">No More Recipes Found</h5>' );
 			getMore = false;
 		}
 
@@ -157,30 +147,30 @@ function addRecipes( data ) {
 	{
 		var food_card;
 
-		food_card = `<div class="card col s12 m6 l4 recipe-card">
-				<div class="card-image waves-effect waves-block waves-light">
-  					<img class="activator" src="${data.hits[i].recipe.image}">
-				</div>
-				<div class="card-content">
-  					<span class="card-title activator grey-text text-darken-4 truncate">${data.hits[i].recipe.label}</span>
-				</div>
-				<div class="card-reveal">
-  					<span class="card-title grey-text text-darken-4 truncate">${data.hits[i].recipe.label}<i class="material-icons right">close</i></span>
-  					<ul>`;
+		food_card = '<div class="card col s12 m6 l4 recipe-card">' +
+				'<div class="card-image waves-effect waves-block waves-light">' +
+  					'<img class="activator" src="'+data.hits[i].recipe.image+'">' +
+				'</div>' +
+				'<div class="card-content">' +
+  					'<span class="card-title activator grey-text text-darken-4 truncate">'+data.hits[i].recipe.label+'</span>' +
+				'</div>' +
+				'<div class="card-reveal">' +
+  					'<span class="card-title grey-text text-darken-4 truncate">'+data.hits[i].recipe.label+'<i class="material-icons right">close</i></span>' +
+  					'<ul>';
 
   		var j = 0;
 		while( j < data.hits[i].recipe.healthLabels.length ){
-			food_card += `<li>${data.hits[i].recipe.healthLabels[j]}</li>`;
+			food_card += '<li>'+data.hits[i].recipe.healthLabels[j]+'</li>';
 			j++;
 			if( j > 5 ){
 				break;
 			}
 		}
 
-  		food_card += `</ul>
-  					<a href="${data.hits[i].recipe.url}">Get The Recipe Here</a>
-				</div>
-			</div>`;
+  		food_card += '</ul>'+
+  					'<a href="'+data.hits[i].recipe.url+'">Get The Recipe Here</a>'+
+				'</div>'+
+			'</div>';
 
 		$('.food-rows').append( food_card );
 
